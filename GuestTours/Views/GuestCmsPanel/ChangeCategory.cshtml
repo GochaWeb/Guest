@@ -1,0 +1,155 @@
+﻿@model IEnumerable<GuestTours.Models.CategoryTranslated>
+@{
+    ViewBag.Title = "ChangeCategory";
+    Layout = "~/Views/Shared/_CmsLayout.cshtml";
+}
+
+<div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1 class="my-h1">კატეგორიაების  შეცვლა წაშლა</h1>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <p style="color:green">@TempData["Success"]</p>
+
+
+                </div>
+            </div>  <!-- End row -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="my-block">
+                        <div class="table-responsive">
+                            <h1 class="my-h1">ტურების კატეგორია</h1>
+                            <table class="table">
+                                <tr>
+
+                                    <th>
+                                        Name
+                                    </th>
+
+                                    <th>
+                                        მოქმედება
+                                    </th>
+                                </tr>
+                                @foreach (var item in Model)
+        {
+                        <tr>
+
+                            <td>@item.Name</td>
+                            <td><a href="@Url.Action("ChangeAddedCategory","GuestCmsPanel",new { id=item.CategoryID})" class="btn btn-warning">რედაქტირება</a></td>
+                            <td><a href="@Url.Action("DeleteCategory","GuestCmsPanel",new { id=item.CategoryID})" class="btn btn-danger">წაშლა</a></td>
+
+
+
+                        </tr>
+
+}
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+                 <div class="row">
+                <div class="col-sm-12">
+                    <div class="my-block">
+                        <div class="table-responsive">
+                             <h1 class="my-h1">სერვისების კატეგორია</h1>
+                            <table class="table">
+                                <tr>
+                                   
+                                    <th>
+                                        Name
+                                    </th>
+
+                                    <th>
+                                        მოქმედება
+                                    </th>
+                                </tr>
+                                @foreach (var item in ViewBag.CategoryService)
+                                {
+                                    <tr>
+             
+                                        <td>@item.Name</td>
+                                        <td><a href="@Url.Action("ChangeAddedCatServ","GuestCmsPanel",new { id=item.CategoryID})" class="btn btn-warning">რედაქტირება</a></td>
+                                        <td><a href="@Url.Action("DeleteCatServ","GuestCmsPanel",new { id=item.CategoryID})" class="btn btn-danger">წაშლა</a></td>
+
+                                    
+
+                                    </tr>
+
+                                }
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div> <!-- container -->
+
+
+    </div> <!-- content -->
+
+</div>
+<!-- End content-page -->
+<!-- ============================================================== -->
+<!-- End Right content here -->
+<!-- ============================================================== -->
+<!-- Right Sidebar -->
+<!-- <div class="side-bar right-bar">
+    <a href="javascript:void(0);" class="right-bar-toggle">
+        <i class="zmdi zmdi-close-circle-o"></i>
+    </a>
+    <h4 class="">Notifications</h4>
+    <div class="notification-list nicescroll">
+        <ul class="list-group list-no-border user-list">
+
+
+
+
+        </ul>
+    </div>
+</div> -->
+<!-- /Right-bar -->
+        </div>
+<!-- END wrapper -->
+
+<script>
+
+    $(document).ready(function () {
+
+        $('.btn-danger').click(function () {
+
+            var x = confirm('დარწმუნებული ხარ?');
+            if (x) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+    });
+
+
+</script>
+
+
+</body>
+</html>
+
+

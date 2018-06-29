@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/libs/bootstrap.css">
+    <link href="~/libs/jquery.fancybox.min.css" rel="stylesheet" />
+    <link href="~/libs/isotope.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/libs/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="/style/style.css">
+    <script src="/libs/jQ.3.3.1.js"></script>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("Index","Home")">Brand.ge</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="active"><a href="@Url.Action("Index","Home")">@GuestTours.Resources.Menu.Home <span class="sr-only">(current)</span></a></li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@GuestTours.Resources.Menu.Services <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("View","Services")">@GuestTours.Resources.Menu.AllServices</a></li>
+                            <li role="separator" class="divider"></li>
+                            @foreach (var item in ViewBag.CategoryService)
+                            {
+                                <li><a href="@Url.Action("View","Services",new { by=item.Name})">@item.Name</a></li>
+                            }
+
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@GuestTours.Resources.Menu.Tours <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("View","Tours")">@GuestTours.Resources.Menu.AllTours</a></li>
+                            <li role="separator" class="divider"></li>
+                            @foreach (var item in ViewBag.Category)
+                            {
+                                <li><a href="@Url.Action("View","Tours",new { by=item.Name})">@item.Name</a></li>
+                            }
+
+
+                        </ul>
+                    </li>
+
+                    <li><a href="@Url.Action("Index","Gallery")">@GuestTours.Resources.Menu.Gallery</a></li>
+                    <li><a href="@Url.Action("Index","AboutUs")">@GuestTours.Resources.Menu.AboutUS</a></li>
+                    <li><a href="@Url.Action("Index","Contact")">@GuestTours.Resources.Menu.Contact</a></li>
+
+
+                    <li>
+                        @if (ViewContext.RouteData.Values.ContainsKey("id"))
+                        {
+                            <div class="flag-wrapper">
+                                <a href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { language = "ka-GE", id = ViewContext.RouteData.Values["id"].ToString()})" class="flags"><img src="/img/flags/geo.ico" class="flag-img" title="Georgian"></a>
+                                <a href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { language = "en-US", id = ViewContext.RouteData.Values["id"].ToString()})" class="flags"><img src="/img/flags/eng.ico" class="flag-img" title="English"></a>
+                                <a href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { language = "ru-RU", id = ViewContext.RouteData.Values["id"].ToString()})" class="flags"><img src="/img/flags/rus.ico" class="flag-img" title="Russian"></a>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="flag-wrapper">
+                                <a href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { language = "ka-GE" })" class="flags"><img src="/img/flags/geo.ico" class="flag-img" title="Georgian"></a>
+                                <a href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { language = "en-US" })" class="flags"><img src="/img/flags/eng.ico" class="flag-img" title="English"></a>
+                                <a href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { language = "ru-RU" })" class="flags"><img src="/img/flags/rus.ico" class="flag-img" title="Russian"></a>
+                            </div>
+                        }
+                    </li>
+                </ul>
+
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+
+    @RenderBody()
+
+
+    <footer>
+        <div class="footer-blur">
+            <div class="border-bottom container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h3 class="footer-h3 left-h3">@GuestTours.Resources.Menu.Tours</h3>
+                        <nav class="tours">
+                            <ul class="tours-ul">
+                                @foreach (var item in ViewBag.Category)
+                                {
+                                    <li><a href="@Url.Action("View","Tours",new { by=item.Name})" class="tours-a">@item.Name</a></li>
+
+                                }
+
+
+                            </ul>
+                        </nav> <!-- tours -->
+                    </div>
+                    <div class="col-sm-4">
+                        <h3 class="footer-h3 center-h3">@GuestTours.Resources.Menu.Services</h3>
+                        <nav class="services">
+                            <ul class="services-ul">
+
+                                @foreach (var item in ViewBag.CategoryService)
+                                {
+                                    <li><a href="@Url.Action("View","Services",new { by=item.Name})" class="services-a">@item.Name</a></li>
+
+                                }
+                            </ul>
+                        </nav> <!-- services -->
+                    </div>
+                    <div class="col-sm-4">
+                        <h3 class="footer-h3 right-h3">@GuestTours.Resources.Menu.Contact</h3>
+                        <address class="contact">
+                            <p>Some Street Name and Nomber</p>
+                            <p>Some Mobile Nomber</p>
+                            <p>Some Office Nomber</p>
+                            <a href="#" class="contact-social-a">Facebook</a>
+                        </address>
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+            <p class="copyright">&copy; Site.ge All Rights Is Ok</p>
+        </div> <!-- footer-blur -->
+    </footer>
+
+
+    <script src="/libs/bootstrap.min.js"></script>
+    <script src="/libs/jssor.slider-27.1.0.min.js"></script>
+    <script src="/libs/owl.carousel.min.js"></script>
+    <script src="~/libs/jquery.fancybox.min.js"></script>
+    <script src="/js/script.js"></script>
+    <script type="text/javascript">jssor_1_slider_init();</script>
+
+    <script src="/Scripts/jquery.validate.min.js"></script>
+    <script src="/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+
+    $(document).ready(function () {
+        if ('@ViewContext.RouteData.Values["controller"]'=="Tours" && '@Request.QueryString'.trim())
+        {
+            $('.flag-wrapper a').click(function () {
+
+                let Id = '@Request.QueryString["by"]';
+                let url = $(this).attr('href').substr(1,5);
+                $.ajax({
+
+                    method: "post",
+                    url: '/url/Tours/Get',
+                    data: JSON.stringify({ 'Id': Id, 'Url': url }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+
+                        window.location.replace('/' + url + '/' + '@ViewContext.RouteData.Values["controller"]' +'/'+'@ViewContext.RouteData.Values["action"]' +"?by=" + response);
+                    }
+
+                });
+
+            });
+
+        }
+
+
+
+
+
+    });
+
+
+
+    </script>
+
+
+    <script>
+
+    $(document).ready(function () {
+        if ('@ViewContext.RouteData.Values["controller"]'=="Services" && '@Request.QueryString'.trim())
+        {
+             $('.flag-wrapper a').click(function () {
+
+                let Id = '@Request.QueryString["by"]';
+                let url = $(this).attr('href').substr(1, 5);
+
+
+                $.ajax({
+
+                    method: "post",
+                    url: '/url/Services/Get',
+                    data: JSON.stringify({ 'Id': Id, 'Url': url }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+
+                        window.location.replace('/' + url + '/' + '@ViewContext.RouteData.Values["controller"]' +'/'+'@ViewContext.RouteData.Values["action"]' +"?by=" + response);
+                    }
+
+                });
+
+            });
+
+        }
+
+
+
+
+
+    });
+
+
+
+    </script>
+
+
+
+</body>
+</html>

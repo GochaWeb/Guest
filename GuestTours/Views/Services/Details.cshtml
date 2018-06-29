@@ -1,0 +1,74 @@
+﻿@model GuestTours.Models.ServicesTranslated
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="top-photo">
+    <h1 class="top-photo-h1">@Model.CategoryName</h1>
+</div> <!-- top-photo -->
+
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")">@GuestTours.Resources.Menu.Home</a></li>
+        <li><a href="@Url.Action("View","Services")">@GuestTours.Resources.Menu.AllServices</a></li>
+        <li class="active">@Model.CategoryName</li>
+    </ol>
+</div> <!-- container -->
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-sm-4">
+            <nav class="left-bar-nav">
+                <h2 class="left-side-h2">@GuestTours.Resources.Text.OurService</h2>
+                <ul class="left-side-ul">
+                @foreach(var item in ViewBag.CategoryService)
+                {
+                     <li><a href="@Url.Action("View","Services",new { by=item.Name})" class="left-side-ul-li-a">@item.Name</a></li>
+                }
+                   
+                   
+                </ul> <!-- left-side-ul -->
+            </nav> <!-- left-bar-nav -->
+        </div> <!-- col-sm-4 -->
+
+        <div class="col-sm-8">
+            <div class="detail-wrapper">
+                <!-- new carousel-->
+                <div class="owl-carousel owl-tours">
+
+                    @foreach (var item in ViewBag.Slider)
+                    {
+                        <div class="item">
+
+                            <div class="owl-tours">
+
+                                <div class="owl-tours-img-wrapper">
+                                    <img src="@item.Photo" alt="slider" class="owl-tours-img">
+                                </div> <!-- owl-services-img-wrapper -->
+
+                            </div> <!-- owl-tours -->
+
+                        </div> <!-- item -->
+
+                    }
+
+                </div> <!-- owl-carousel -->
+                <!-- new carousel-->
+
+
+                <h2 class="detail-h2">@Model.Title<span class="category-box-span">3 Day<span class="price-color"> @Model.Service.Price @GuestTours.Resources.Text.Price</span></span></h2>
+
+                <ul class="detail-ul">
+                    <li>Language - rus / en / fr</li>
+                </ul>
+
+                <p class="detail-p">
+                    @Model.BigText
+                </p>
+            </div> <!-- detail-wrapper -->
+        </div> <!-- col-sm-8 -->
+
+    </div> <!-- row -->
+</div> <!-- container -->

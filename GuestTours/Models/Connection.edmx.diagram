@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6b8b15f968074685bc5632dc36670033" Name="Diagram1">
+        <EntityTypeShape EntityType="GuestToursModel.Category" Width="1.5" PointX="0.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GuestToursModel.CategoryTranslated" Width="1.5" PointX="0.5" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GuestToursModel.Language" Width="1.5" PointX="2.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GuestToursModel.sysdiagram" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GuestToursModel.TourTranslated" Width="1.5" PointX="4.875" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="GuestToursModel.FK_CategoryTranslated_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="GuestToursModel.FK_CategoryTranslated_Language" ManuallyRouted="false" />
+        <AssociationConnector Association="GuestToursModel.FK_TourTranslated_Language" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="GuestToursModel.Tour" Width="1.5" PointX="6.875" PointY="0.5" />
+        <AssociationConnector Association="GuestToursModel.FK_TourTranslated_Tours" />
+        <EntityTypeShape EntityType="GuestToursModel.TourPhoto" Width="1.5" PointX="9" PointY="0.5" />
+        <AssociationConnector Association="GuestToursModel.FK_TourPhoto_Tours" />
+        <EntityTypeShape EntityType="GuestToursModel.CategoryService" Width="1.5" PointX="7.75" PointY="3.875" />
+        <EntityTypeShape EntityType="GuestToursModel.CategoryServiceTranslated" Width="1.5" PointX="6" PointY="3.75" />
+        <AssociationConnector Association="GuestToursModel.FK_CategoryServiceTranslated_CategoryService" />
+        <AssociationConnector Association="GuestToursModel.FK_CategoryServiceTranslated_Language" />
+        <EntityTypeShape EntityType="GuestToursModel.Service" Width="1.5" PointX="3.625" PointY="6.125" />
+        <EntityTypeShape EntityType="GuestToursModel.ServicesPhoto" Width="1.5" PointX="6.25" PointY="7.75" />
+        <EntityTypeShape EntityType="GuestToursModel.ServicesTranslated" Width="1.5" PointX="8.875" PointY="6.625" />
+        <AssociationConnector Association="GuestToursModel.FK_ServicesTranslated_Language" />
+        <AssociationConnector Association="GuestToursModel.FK_ServicesPhoto_Services" />
+        <AssociationConnector Association="GuestToursModel.FK_ServicesTranslated_Services" />
+        <EntityTypeShape EntityType="GuestToursModel.Gallery" Width="1.5" PointX="11.125" PointY="1.125" />
+        <EntityTypeShape EntityType="GuestToursModel.Slider" Width="1.5" PointX="11.125" PointY="6.125" />
+        <EntityTypeShape EntityType="GuestToursModel.SliderTranslated" Width="1.5" PointX="11.125" PointY="3.5" />
+        <AssociationConnector Association="GuestToursModel.FK_SliderTranslated_Language" />
+        <AssociationConnector Association="GuestToursModel.FK_SliderTranslated_Slider" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

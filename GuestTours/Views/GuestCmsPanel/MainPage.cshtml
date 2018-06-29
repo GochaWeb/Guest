@@ -1,0 +1,123 @@
+﻿@model IEnumerable<GuestTours.Models.Slider>
+@{
+    ViewBag.Title = "MainPage";
+    Layout = "~/Views/Shared/_CmsLayout.cshtml";
+}
+
+
+<link href="~/assets/css/Photo.css" rel="stylesheet" />
+<div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1 class="my-h1">მთავარი გვერდის შეცვლა</h1>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="my-block">
+                        <p class="text-success">@TempData["Success"]</p>
+                        <form action="@Url.Action("AddSlider","GuestCmsPanel")" method="post" enctype="multipart/form-data">
+
+                            <h5 class="my-h5 align-center">მთავარი გვერდის სლაიდერის ფოტოების დამატება</h5>
+                            <input type="file" name="Photo" placeholder="ფოტო" required  class="my-file centered" />
+
+                            <input type="text" name="LangEng" style="display:none" value="en-US" />
+                            <textarea class="my-textarea" name="TextEng" placeholder="სლაიდერის ტექსტი Eng" required></textarea>
+
+                            <input type="text"  name="LangRus" style="display:none" value="ru-RU" />
+                            <textarea class="my-textarea" name="TextRus" placeholder="სლაიდერის ტექსტი Rus" required></textarea>
+
+                            <input type="text" name="LangGeo" style="display:none" value="ka-GE" />
+                            <textarea class="my-textarea" name="TextGeo" placeholder="სლაიდერის ტექსტი Geo" required></textarea>
+
+
+
+                            <button type="submit" class="btn btn-success centered">გაგზავნა</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div id="SliderPhoto">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-sm-4">
+                            <div class="my-block">
+                                <form action="@Url.Action("ChangeSliderText","GuestCmsPanel",new { item.Id})" method="post" enctype="multipart/form-data">
+                                    <input type="file" name="Photo" placeholder="ფოტო"  class="my-file centered" />
+                                    <textarea class="my-textarea" name="TextEng" placeholder="სლაიდერის ტექსტი Eng" required>@item.SliderTranslateds.FirstOrDefault(x=>x.LangCode=="en-US").Text</textarea>
+                                    <textarea class="my-textarea" name="TextRus" placeholder="სლაიდერის ტექსტი Rus" required>@item.SliderTranslateds.FirstOrDefault(x=>x.LangCode=="ru-RU").Text</textarea>
+                                    <textarea class="my-textarea" name="TextGeo" placeholder="სლაიდერის ტექსტი Geo" required>@item.SliderTranslateds.FirstOrDefault(x=>x.LangCode=="ka-GE").Text</textarea>
+                                    <button class="btn btn-success centered">შეცვლა</button>
+                                </form>
+                                    <div class="div-wrapper" style="background-image: url(@item.Photo);">
+
+                                        <a id="close-del" class="close-wrapper" href="@Url.Action("DelSlider","GuestCmsPanel",new { item.Id})"><i class="fa fa-window-close"></i></a>
+                                    </div>
+                            </div>
+                        </div>
+                    }
+                 </div>
+            </div>
+
+
+
+
+
+        </div> <!-- container -->
+
+
+    </div> <!-- content -->
+
+</div>
+<!-- End content-page -->
+<!-- ============================================================== -->
+<!-- End Right content here -->
+<!-- ============================================================== -->
+<!-- Right Sidebar -->
+<!-- <div class="side-bar right-bar">
+    <a href="javascript:void(0);" class="right-bar-toggle">
+        <i class="zmdi zmdi-close-circle-o"></i>
+    </a>
+    <h4 class="">Notifications</h4>
+    <div class="notification-list nicescroll">
+        <ul class="list-group list-no-border user-list">
+
+
+
+
+        </ul>
+    </div>
+</div> -->
+<!-- /Right-bar -->
+</div>
+<!-- END wrapper -->
+
+<script>
+    $(document).ready(function () {
+        $('.close-wrapper').click(function () {
+            var x = confirm('დარწმუნებული ხარ?');
+            if (x) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+    });
+</script>
+<script src="/Scripts/jquery.validate.min.js"></script>
+<script src="/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+</body>
+</html>
+
+

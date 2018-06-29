@@ -1,0 +1,169 @@
+﻿@model IEnumerable<GuestTours.Models.TourTranslated>
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- Start Jssor Slider -->
+<div style="position:relative;top:0;left:0;width:100%;height:100%;overflow:hidden;">
+    <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:960px;height:640px;overflow:hidden;visibility:hidden;">
+        <!-- Loading Screen -->
+        <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+            <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/slider-img/spin.svg" />
+        </div>
+        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:960px;height:640px;overflow:hidden;">
+            @foreach (var item in ViewBag.Slider)
+            {
+                <div data-p="200.00">
+                    <img data-u="image" src="@item.Slider.Photo" />
+                    <div class="slider-title">
+                        <h1>@item.Text</h1>
+                    </div>
+                </div>
+
+            }
+
+
+        </div>
+        <!-- Bullet Navigator -->
+        <div data-u="navigator" class="jssorb064" style="position:absolute;bottom:12px;right:12px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
+            <div data-u="prototype" class="i" style="width:16px;height:16px;">
+                <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                    <circle class="b" cx="8000" cy="8000" r="5800"></circle>
+                </svg>
+            </div>
+        </div>
+        <!-- Arrow Navigator -->
+        <div data-u="arrowleft" class="jssora051" style="width:55px;height:55px;top:0px;left:25px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
+            <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                <polyline class="a" points="11040,1920 4960,8000 11040,14080 "></polyline>
+            </svg>
+        </div>
+        <div data-u="arrowright" class="jssora051" style="width:55px;height:55px;top:0px;right:25px;" data-autocenter="2" data-scale="0.75" data-scale-right="0.75">
+            <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                <polyline class="a" points="4960,1920 11040,8000 4960,14080 "></polyline>
+            </svg>
+        </div>
+    </div>
+</div>
+<!-- End Jssor Slider -->
+
+
+
+<div class="container-fluid">
+    <div class="col-sm-12">
+        <h1 class="welcome-h1">@GuestTours.Resources.Text.MainText</h1>
+        <h3 class="welcome-h3">
+           @GuestTours.Resources.Text.MainText1
+        </h3>
+    </div> <!-- col-sm-12 -->
+</div> <!-- container-fluid -->
+
+
+<div class="container-fluid">
+    <div class="col-sm-12">
+        <div class="owl-carousel owl-services">
+
+            @foreach (var item in Model)
+            {
+                <div class="item">
+                    <a class="owl-tours-services" href="@Url.Action("Details","Tours",new { id=item.Tour.Id})">
+
+                        <div class="owl-services-img-wrapper">
+                            <img src="@item.Tour.Photo" alt="slider" class="owl-services-img">
+                            <div class="owl-services-div">
+                                <p class="owl-services-p">
+                                    @item.Title <span class="owl-service-detail">&nbsp;&nbsp;&nbsp;@item.Tour.TourDate @GuestTours.Resources.Text.Date</span><br>
+                                    <span class="hover-detail">@GuestTours.Resources.Text.Country</span>
+                                </p>
+                            </div>
+                        </div> <!-- owl-services-img-wrapper -->
+
+                        <h3 class="owl-services-h3">@item.Title<span class="owl-service-detail-red">&nbsp;&nbsp;&nbsp;@item.Tour.TourDate @GuestTours.Resources.Text.Date</span></h3>
+                        <p class="owl-sirvices-description">@item.Text</p>
+                        <span class="owl-services-detail">@GuestTours.Resources.Text.More</span>
+                    </a> <!-- owl-tours -->
+                </div> <!-- item -->
+
+            }
+
+
+
+
+        </div> <!-- owl-carousel -->
+    </div> <!-- col-sm-12 -->
+</div> <!-- container-fluid -->
+
+
+
+<div class="parallax">
+    <div class="blur">
+
+        <div class="owl-parallax owl-carousel">
+            @foreach (var item in ViewBag.Tours)
+            {
+
+                <div class="item">
+                    <a class="owl-parallax-a" href="@Url.Action("Details","Tours",new { id=item.Tour.Id})">
+                        <h1 class="owl-parallax-h1">@item.Title</h1>
+                        <h3 class="owl-parallax-h3">@GuestTours.Resources.Text.PriceName: @item.Tour.Price @GuestTours.Resources.Text.Price</h3>
+                        <p class="owl-parallax-p">(@item.Title )</p>
+                        <p class="owl-parallax-date">@item.Tour.TourDate @GuestTours.Resources.Text.Date</p>
+                    </a> <!-- owl-parallax-a -->
+                </div> <!-- item -->
+
+
+            }
+
+        </div> <!-- owl-carousel -->
+
+
+
+    </div> <!-- blur -->
+</div> <!-- parallax -->
+
+
+
+
+<div class="container-fluid">
+    <div class="col-sm-12">
+        <h1 class="welcome-h1">@GuestTours.Resources.Text.MainTextServ</h1>
+        <h3 class="welcome-h3">
+           @GuestTours.Resources.Text.MainTextServ1
+        </h3>
+    </div> <!-- col-sm-12 -->
+</div> <!-- container-fluid -->
+
+
+<div class="container-fluid">
+    <div class="col-sm-12">
+        <div class="owl-round owl-carousel">
+            @foreach (var item in ViewBag.Service)
+            {
+                <div class="item">
+                    <div class="owl-round-wrapper">
+                        <div class="owl-round-img-wrapper">
+                            <img src="@item.Service.Photo" alt="slider" class="owl-round-img">
+                            <div class="owl-round-hidden-text-wrapper">
+                                <a href="@Url.Action("View","Services",new { id=item.Service.Id})" class="owl-round-hidden-a">@GuestTours.Resources.Text.More</a>
+                            </div> <!-- owl-round-hidden-text-wrapper -->
+                        </div> <!-- owl-round-img-wrapper -->
+                    </div> <!-- owl-round-wrapper -->
+
+                    <h2 class="owl-round-h2">@item.Title</h2>
+                    <h3 class="owl-round-h3">@GuestTours.Resources.Text.Country</h3>
+                    <p class="owl-round-price">@GuestTours.Resources.Text.PriceName: @item.Service.Price @GuestTours.Resources.Text.Price</p>
+                    <a href="@Url.Action("Details","Services",new { id=item.TourID})" class="owl-round-detail">@GuestTours.Resources.Text.More</a>
+                </div> <!-- item -->
+
+            }
+
+
+
+
+
+
+
+
+        </div> <!-- .owl-round .owl-carousel -->
+    </div> <!-- col-sm-12 -->
+</div> <!-- container-fluid -->

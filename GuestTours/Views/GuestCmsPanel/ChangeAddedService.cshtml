@@ -1,0 +1,221 @@
+﻿@model GuestTours.Models.TourModel
+@{
+    ViewBag.Title = "ChangeAddedService";
+    Layout = "~/Views/Shared/_CmsLayout.cshtml";
+}
+
+<link href="~/assets/css/Photo.css" rel="stylesheet" />
+<div class="content">
+
+
+    <div class="content-page">
+        <!-- Start content -->
+
+        <div class="container">
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1 class="my-h1">ტურების დამატება</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="my-block">
+                        <p class="text-success centered">@TempData["Success"]</p>
+                        @using (Html.BeginForm("ChangeAddedServices", "GuestCmsPanel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+
+
+                            <input type="text" name="Id" style="display:none" value="@ViewBag.Tour.Id" />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger centered" })
+                            @Html.TextBoxFor(model => model.TourDate, new { @Value = ViewBag.Tour.TourDate, @type = "text", @placeholder = "სერვისის თარიღი", @class = "my-text-inputs" })
+                            <div align="center">
+                                @Html.ValidationMessageFor(model => model.TourDate, "", new { @class = "text-danger centered" })
+                            </div>
+                            @Html.TextBoxFor(model => model.Price, new { @Value = ViewBag.Tour.Price, @type = "text", @placeholder = "სერვისის ფასი", @class = "my-text-inputs" })
+                            <div align="center">
+                                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger centered" })
+                            </div>
+                            <img src="@ViewBag.Tour.Photo" />
+                            <input type="file" class="my-file" name="Photo" width="150px" />
+                            <h1 class="my-h1"> ინგლისური</h1>
+                            @Html.TextBoxFor(model => model.CategoryNameEng, new { @Value = ViewBag.ToursEng.CategoryName, @type = "text", @placeholder = "სერვისის კატეგორიის სახელი Eng", @class = "my-text-inputs" })
+                            <div align="center">
+                                @Html.ValidationMessageFor(model => model.CategoryNameEng, "", new { @class = "text-danger centered" })
+                            </div>
+                            @Html.TextBoxFor(model => model.TitleEng, new { @Value = ViewBag.ToursEng.Title, @type = "text", @placeholder = "სერვისის სათაური Eng", @class = "my-text-inputs" })
+
+                            <div align="center">
+                                @Html.ValidationMessageFor(model => model.TitleEng, "", new { @class = "text-danger centered" })
+                            </div>
+                            @Html.TextAreaFor(model => model.BigTextEng, new { @Value = ViewBag.ToursEng.BigText, @type = "text", @placeholder = "სერვისის შიდა ტექსტი Eng", @class = "my-textarea" })
+                            <div align="center">
+                                @Html.ValidationMessageFor(model => model.BigTextEng, "", new { @class = "text-danger centered" })
+                            </div>
+                            @Html.TextBoxFor(model => model.TextEng, new { @Value = ViewBag.ToursEng.Text, @type = "text", @placeholder = "სერვისის ტექსტი Eng", @class = "my-textarea" })
+                            <div align="center">
+                                @Html.ValidationMessageFor(model => model.TextEng, "", new { @class = "text-danger centered" })
+                            </div>
+
+
+
+                            <h1 class="my-h1">რუსული</h1>
+
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger centered" })
+
+                            @Html.TextBoxFor(model => model.CategoryNameRus, new { @Value = ViewBag.ToursRus.CategoryName, @type = "text", @placeholder = "სერვისის კატეგორიის სახელი Rus", @class = "my-text-inputs" })
+                            <div align="center">
+                                @Html.ValidationMessageFor(model => model.CategoryNameRus, "", new { @class = "text-danger centered" })
+                            </div>
+
+                            @Html.TextBoxFor(model => model.TitleRus, new { @Value = ViewBag.ToursRus.Title, @type = "text", @placeholder = "სერვისის სათაური Rus", @class = "my-text-inputs" })
+
+                            <div align="center">
+                                @Html.ValidationMessageFor(model => model.TitleRus, "", new { @class = "text-danger centered" })
+                            </div>
+                            @Html.TextAreaFor(model => model.BigTextRus, new { @Value = ViewBag.ToursRus.BigText, @type = "text", @placeholder = "სერვისის შიდა ტექსტი Rus", @class = "my-textarea" })
+                            <div align="center">
+                                @Html.ValidationMessageFor(model => model.BigTextRus, "", new { @class = "text-danger centered" })
+                            </div>
+                            @Html.TextBoxFor(model => model.TextRus, new { @Value = ViewBag.ToursRus.Text, @type = "text", @placeholder = "სერვისის ტექსტი Rus", @class = "my-textarea" })
+                            <div align="center">
+                                @Html.ValidationMessageFor(model => model.TextRus, "", new { @class = "text-danger centered" })
+                            </div>
+
+
+
+                            <h1 class="my-h1">ქართული</h1>
+
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger centered" })
+
+                            @Html.TextBoxFor(model => model.CategoryNameGeo, new { @Value = ViewBag.ToursGeo.CategoryName, @type = "text", @placeholder = "სერვისის კატეგორიის სახელი Eng", @class = "my-text-inputs" })
+                            <div align="center">
+                                @Html.ValidationMessageFor(model => model.CategoryNameGeo, "", new { @class = "text-danger centered" })
+                            </div>
+
+                            @Html.TextBoxFor(model => model.TitleGeo, new { @Value = ViewBag.ToursGeo.Title, @type = "text", @placeholder = "სერვისის სათაური Geo", @class = "my-text-inputs" })
+
+                            <div align="center">
+                                @Html.ValidationMessageFor(model => model.TitleGeo, "", new { @class = "text-danger centered" })
+                            </div>
+                            @Html.TextAreaFor(model => model.BigTextGeo, new { @Value = ViewBag.ToursGeo.BigText, @type = "text", @placeholder = "სერვისის შიდა ტექსტი Geo", @class = "my-textarea" })
+                            <div align="center">
+                                @Html.ValidationMessageFor(model => model.BigTextGeo, "", new { @class = "text-danger centered" })
+                            </div>
+                            @Html.TextBoxFor(model => model.TextGeo, new { @Value = ViewBag.ToursGeo.Text, @type = "text", @placeholder = "სერვისის ტექსტი Geo", @class = "my-textarea" })
+                            <div align="center">
+                                @Html.ValidationMessageFor(model => model.TextGeo, "", new { @class = "text-danger centered" })
+                            </div>
+
+
+
+                            <div>
+                                <input type="submit" value="შეცვლა" class="btn btn-success centered" />
+
+
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="my-block">
+
+                        <form action="@Url.Action("AddServicePhoto","GuestCmsPanel")" method="post" enctype="multipart/form-data">
+                            <input type="text" name="Id" style="display:none" value="@ViewBag.Tour.Id" />
+                            <h5 class="my-h5 align-center">ტურის სლაიდერის ფოტოების დამატება</h5>
+
+                            <input type="file" name="Photo" placeholder="ფოტო" required multiple class="my-file centered" />
+                            <button type="submit" class="btn btn-success centered">გაგზავნა</button>
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div id="SliderPhoto">
+                    @foreach (var item in ViewBag.Slider)
+                    {
+                        <div class="col-sm-4">
+                            <div class="my-block">
+                                <div class="div-wrapper" style="background-image: url(@item.Photo);">
+                                    <a id="close-del" class="close-wrapper" href="@Url.Action("DelServSliderPhoto","GuestCmsPanel",new { id=item.Id})"><i class="fa fa-window-close"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+
+
+
+
+
+
+        </div> <!-- container -->
+
+
+    </div> <!-- content -->
+
+</div>
+<!-- End content-page -->
+<!-- ============================================================== -->
+<!-- End Right content here -->
+<!-- ============================================================== -->
+<!-- Right Sidebar -->
+<!-- <div class="side-bar right-bar">
+    <a href="javascript:void(0);" class="right-bar-toggle">
+        <i class="zmdi zmdi-close-circle-o"></i>
+    </a>
+    <h4 class="">Notifications</h4>
+    <div class="notification-list nicescroll">
+        <ul class="list-group list-no-border user-list">
+
+
+
+
+        </ul>
+    </div>
+</div> -->
+<!-- /Right-bar -->
+        </div>
+<!-- END wrapper -->
+
+<script>
+    $(document).ready(function () {
+        $('.close-wrapper').click(function () {
+            var x = confirm('დარწმუნებული ხარ?');
+            if (x) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('#BigTextEng').val('@ViewBag.ToursEng.BigText')
+        $('#BigTextRus').val('@ViewBag.ToursRus.BigText')
+        $('#BigTextGeo').val('@ViewBag.ToursGeo.BigText')
+
+    });
+
+</script>
+<script src="/Scripts/jquery.validate.min.js"></script>
+<script src="/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    </body>
+    </html>
+
+
+

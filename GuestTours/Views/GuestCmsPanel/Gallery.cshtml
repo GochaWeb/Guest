@@ -1,0 +1,100 @@
+﻿@model IEnumerable<GuestTours.Models.Gallery>
+@{
+    ViewBag.Title = "Gallery";
+    Layout = "~/Views/Shared/_CmsLayout.cshtml";
+}
+<link href="~/assets/css/Photo.css" rel="stylesheet" />
+<div class="content">
+
+
+    <div class="content-page">
+        <!-- Start content -->
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1 class="my-h1">გალერიის ფოტოების დამატება წაშლა</h1>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="my-block">
+                        <p class="text-success centered">@TempData["Success"]</p>
+                        <form action="@Url.Action("AddGalleryPhoto","GuestCmsPanel")" method="post" enctype="multipart/form-data">
+
+                            <h5 class="my-h5 align-center">ფოტოების დამატება</h5>
+
+                            <input type="file" name="Photo" placeholder="ფოტო" required multiple class="my-file centered" />
+                            <button type="submit" class="btn btn-success centered">გაგზავნა</button>
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+
+                   <div class="row">
+            <div id="SliderPhoto">
+                @foreach (var item in Model)
+                {
+                    <div class="col-sm-4">
+                        <div class="my-block">
+                            <div class="div-wrapper" style="background-image: url(@item.Photo);">
+                                <a id="close-del" class="close-wrapper" href="@Url.Action("DelGalleryPhoto","GuestCmsPanel",new { id=item.Id})"><i class="fa fa-window-close"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+
+        </div> <!-- container -->
+
+
+    </div> <!-- content -->
+
+</div>
+<!-- End content-page -->
+<!-- ============================================================== -->
+<!-- End Right content here -->
+<!-- ============================================================== -->
+<!-- Right Sidebar -->
+<!-- <div class="side-bar right-bar">
+    <a href="javascript:void(0);" class="right-bar-toggle">
+        <i class="zmdi zmdi-close-circle-o"></i>
+    </a>
+    <h4 class="">Notifications</h4>
+    <div class="notification-list nicescroll">
+        <ul class="list-group list-no-border user-list">
+
+
+
+
+        </ul>
+    </div>
+</div> -->
+<!-- /Right-bar -->
+        </div>
+<!-- END wrapper -->
+
+<script>
+    $(document).ready(function () {
+        $('.close-wrapper').click(function () {
+            var x = confirm('დარწმუნებული ხარ?');
+            if (x) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+    });
+</script>
+
+
+    </body>
+    </html>
+

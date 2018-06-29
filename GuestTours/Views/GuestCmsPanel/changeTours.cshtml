@@ -1,0 +1,125 @@
+﻿@model IEnumerable<GuestTours.Models.TourTranslated>
+@{
+    ViewBag.Title = "changeTours";
+    Layout = "~/Views/Shared/_CmsLayout.cshtml";
+}
+
+<div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1 class="my-h1">ტურების შეცვლა</h1>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <p style="color:green">@TempData["Success"]</p>
+                   
+                  
+                </div>
+            </div>  <!-- End row -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="my-block">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <th>
+                                        Photo
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+
+                                    <th>
+                                        მოქმედება
+                                    </th>
+                                </tr>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td><img src="@item.Tour.Photo" width="150px;" /></td>
+                                        <td>@item.Title</td>
+                                        <td><a href="@Url.Action("ChangeAddedTours","GuestCmsPanel",new { id=item.TourID})" class="btn btn-warning">რედაქტირება</a></td>
+                                        <td><a href="@Url.Action("DeleteTour","GuestCmsPanel",new { id=item.TourID})" class="btn btn-danger">წაშლა</a></td>
+                                        
+                                        @if (item.Tour.Active == false)
+                                        {
+                                            <td><a href="@Url.Action("MakePopular","GuestCmsPanel",new { id=item.TourID})" class="btn btn-success">გახადე პოპულარული</a></td>
+                                        }
+                                        else
+                                        {
+                                             <td><a href="@Url.Action("DelPopular","GuestCmsPanel",new { id=item.TourID})" class="btn btn-danger">მოხსენი პოპულარულობა</a></td>
+                                        }
+
+                                    </tr>
+                                  
+                                }
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div> <!-- container -->
+
+
+    </div> <!-- content -->
+
+</div>
+<!-- End content-page -->
+<!-- ============================================================== -->
+<!-- End Right content here -->
+<!-- ============================================================== -->
+<!-- Right Sidebar -->
+<!-- <div class="side-bar right-bar">
+    <a href="javascript:void(0);" class="right-bar-toggle">
+        <i class="zmdi zmdi-close-circle-o"></i>
+    </a>
+    <h4 class="">Notifications</h4>
+    <div class="notification-list nicescroll">
+        <ul class="list-group list-no-border user-list">
+
+
+
+
+        </ul>
+    </div>
+</div> -->
+<!-- /Right-bar -->
+        </div>
+<!-- END wrapper -->
+
+<script>
+
+    $(document).ready(function () {
+
+        $('.btn-danger').click(function () {
+
+            var x = confirm('დარწმუნებული ხარ?');
+            if (x) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+    });
+
+
+</script>
+
+
+</body>
+</html>
+
+

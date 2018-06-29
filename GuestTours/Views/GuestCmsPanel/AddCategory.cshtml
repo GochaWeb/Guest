@@ -1,0 +1,87 @@
+﻿@model GuestTours.Models.CategoryModel
+@{
+    ViewBag.Title = "AddCategory";
+    Layout = "~/Views/Shared/_CmsLayout.cshtml";
+}
+
+<div class="content">
+
+
+    <div class="content-page">
+        <!-- Start content -->
+
+        <div class="container">
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1 class="my-h1">კატეგორიების დამატება </h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="my-block">
+
+                        @using (Html.BeginForm("Category", "GuestCmsPanel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <input type="text" name="LangEng" style="display:none" value="en-US" />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger centered" })
+                            @Html.TextBoxFor(model => model.NameEng, new { @name = "Name", @type = "text", @placeholder = "ტურის კატეგორია Eng", @class = "my-text-inputs" })
+                           
+
+                            <input type="text" name="LangRus" style="display:none" value="ru-RU" />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger centered" })
+                            @Html.TextBoxFor(model => model.NameRus, new { @name = "Name", @type = "text", @placeholder = "ტურის კატეგორია Rus", @class = "my-text-inputs" })
+                            
+
+                            <input type="text" name="LangGeo" style="display:none" value="ka-GE" />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger centered" })
+                            @Html.TextBoxFor(model => model.NameGeo, new { @name = "Name", @type = "text", @placeholder = "ტურის კატეგორია Geo", @class = "my-text-inputs" })
+                            <div align="center">
+                                @Html.ValidationMessageFor(model => model.NameGeo, "", new { @class = "text-danger centered" })
+                            </div>
+
+
+                            <div>
+                                <input type="submit" value="დამატება" class="btn btn-success centered" />
+                                <p class="text-success centered">@TempData["Success"]</p>
+                               
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div> <!-- container -->
+
+
+    </div> <!-- content -->
+
+</div>
+<!-- End content-page -->
+<!-- ============================================================== -->
+<!-- End Right content here -->
+<!-- ============================================================== -->
+<!-- Right Sidebar -->
+<!-- <div class="side-bar right-bar">
+    <a href="javascript:void(0);" class="right-bar-toggle">
+        <i class="zmdi zmdi-close-circle-o"></i>
+    </a>
+    <h4 class="">Notifications</h4>
+    <div class="notification-list nicescroll">
+        <ul class="list-group list-no-border user-list">
+
+
+
+
+        </ul>
+    </div>
+</div> -->
+<!-- /Right-bar -->
+        </div>
+<!-- END wrapper -->

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<GuestTours.Models.ServicesTranslated>
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="top-photo">
+    <h1 class="top-photo-h1">@GuestTours.Resources.Menu.Services</h1>
+</div> <!-- top-photo -->
+
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")">@GuestTours.Resources.Menu.Home</a></li>
+        <li class="active">@GuestTours.Resources.Menu.AllServices</li>
+    </ol>
+</div> <!-- container -->
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-sm-4">
+            <nav class="left-bar-nav">
+                <h2 class="left-side-h2">@GuestTours.Resources.Text.OurService</h2>
+                <ul class="left-side-ul">
+                     @foreach (var item in ViewBag.CategoryService)
+                    {
+                        <li><a href="@Url.Action("View","Services",new { by=item.Name})" class="left-side-ul-li-a">@item.Name</a></li>
+                    }
+
+                </ul> <!-- left-side-ul -->
+            </nav> <!-- left-bar-nav -->
+        </div> <!-- col-sm-4 -->
+
+        <div class="col-sm-8">
+            <div class="row">
+                <div class="col-sm-12">
+
+
+                         @foreach (var item in Model)
+                    {
+                        <div class="category-box">
+                            <div class="category-box-img-wrapper">
+                                <img src="@item.Service.Photo" class="category-box-img">
+                            </div> <!-- category-box-img-wrapper -->
+
+                            <div class="category-box-content-wrapper">
+                                <div class="category-box-top-content-wrapper">
+                                    <h2 class="category-box-h2">@item.Title</h2>
+                                    <span class="category-box-span">@item.Service.TourDate @GuestTours.Resources.Text.Date<span class="price-color">@item.Service.Price @GuestTours.Resources.Text.Price</span></span>
+                                </div> <!-- category-box-top-content-wrapper -->
+
+
+
+                                <p class="category-box-p">@item.Text</p>
+
+
+                                <a href="@Url.Action("Details","Services",new { id=item.TourID})" class="category-box-a">@GuestTours.Resources.Text.Details</a>
+                            </div> <!-- category-box-content-wrapper -->
+                        </div> <!-- category-box -->
+                    }
+
+                </div> <!-- col-sm-12 -->
+            </div> <!-- row -->
+        </div> <!-- col-sm-8 -->
+
+    </div> <!-- row -->
+</div> <!-- container -->

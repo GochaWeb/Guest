@@ -1,0 +1,40 @@
+﻿@model IEnumerable<GuestTours.Models.Gallery>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="top-photo">
+    <h1 class="top-photo-h1">@GuestTours.Resources.Text.PhotoGallery</h1>
+</div> <!-- top-photo -->
+
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")">@GuestTours.Resources.Menu.Home</a></li>
+        <li class="active">@GuestTours.Resources.Text.OurGalley</li>
+    </ol>
+</div> <!-- container -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+
+            <div class="grid">
+                <div class="grid-sizer"></div>
+                @foreach(var item in Model)
+                {
+                      <a class="grid-item" href="@item.Photo" data-fancybox>
+                           <img src="@item.Photo" />
+                           <h3 class="hidden-h3">Hotel</h3>
+                           <h4 class="hidden-h4">Guest</h4>
+                     </a>
+                }
+              
+
+                
+
+            </div>
+
+        </div> <!-- col-sm-8 -->
+    </div> <!-- row -->
+</div> <!-- container -->

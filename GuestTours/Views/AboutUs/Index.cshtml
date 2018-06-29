@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="top-photo">
+    <h1 class="top-photo-h1">@GuestTours.Resources.Menu.AboutUS</h1>
+</div> <!-- top-photo -->
+
+
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="index.html">@GuestTours.Resources.Menu.Home</a></li>
+        <li class="active">@GuestTours.Resources.Menu.AboutUS</li>
+    </ol>
+</div> <!-- container -->
+
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-sm-6">
+            <p class="about-p">
+               @GuestTours.Resources.Text.AboutText
+            </p>
+        </div>
+
+        <div class="col-sm-6">
+            <p class="about-p">
+                @GuestTours.Resources.Text.AboutText1
+            </p>
+        </div>
+        <!-- <div class="about-content">
+            <img src="img/slider-img/001.jpg" class="about-content-img">
+        </div> -->
+        <!-- about-content -->
+    </div>  <!-- row -->
+</div> <!-- container -->

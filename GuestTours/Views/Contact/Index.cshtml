@@ -1,0 +1,92 @@
+﻿@model GuestTours.Models.Contact
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="top-photo">
+    <h1 class="top-photo-h1">@GuestTours.Resources.Text.ContactUs</h1>
+</div> <!-- top-photo -->
+
+
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")">@GuestTours.Resources.Menu.Home</a></li>
+        <li class="active">@GuestTours.Resources.Menu.Contact</li>
+    </ol>
+</div> <!-- container -->
+
+
+<div class="container">
+    <div class="row my-col">
+        <div class="col-sm-6">
+            <div class="panel panel-info my-panel">
+                <div class="panel-heading">Send mail</div>
+                <div class="panel-body">
+                    <form action="@Url.Action("Send","Contact")" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            @Html.ValidationSummary(true, "", new { @class="text-danger"})
+                            <label for="name">Your Name</label>
+                             @Html.TextBoxFor(model => model.Name, new { @class= "form-control",@placeholder= "Name" })
+                             @Html.ValidationMessageFor(model => model.Name, "", new { @class="text-danger"})
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Email" })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label for="textField">Your Message</label>
+                            @Html.TextAreaFor(model => model.Text, new { @class = "form-control", @placeholder = "Text" })
+                            @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+                        </div>
+
+                        <button type="submit" class="btn btn-default">Send</button> <p class="text-success">@TempData["Success"]</p>
+                    </form>
+                </div>
+            </div>
+        </div> <!-- col-sm-6 -->
+
+        <div class="col-sm-6">
+            <div class="panel panel-info my-panel">
+                <div class="panel-heading">Address</div>
+                <div class="panel-body">Place:<br>Tbilisi, St.Street N24</div>
+                <hr>
+                <div class="panel-body">Mobile Number:<br>593 53 90 95</div>
+                <hr>
+                <div class="panel-body">Officce Number:<br>593 53 90 95</div>
+            </div> <!-- panel -->
+        </div> <!-- col-sm-6 -->
+    </div>  <!-- row -->
+</div> <!-- container -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="social-box-wrapper">
+                <h2 class="social-h2">Or Find Us On -</h2>
+                <div class="social-box">
+                    <a href="#"><img src="/img/icons/facebook.png" class="social-img"></a>
+                </div> <!-- social-box -->
+
+                <div class="social-box">
+                    <a href="#"><img src="/img/icons/twitter.png" class="social-img"></a>
+                </div> <!-- social-box -->
+
+                <div class="social-box">
+                    <a href="#"><img src="/img/icons/google-plus.png" class="social-img"></a>
+                </div> <!-- social-box -->
+
+            </div> <!-- social-box-wrapper -->
+        </div> <!-- col-sm-12 -->
+    </div> <!-- row -->
+</div>  <!-- container -->
+
+<iframe class="map"
+        frameborder="0"
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDW5_U3APGk38hZuHny8Gg-xD3FGKvK1rc
+    &q=Dusheti+st.+26,Tbilisi"
+        allowfullscreen></iframe>
+

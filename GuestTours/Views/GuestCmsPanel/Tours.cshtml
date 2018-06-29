@@ -1,0 +1,186 @@
+﻿@model GuestTours.Models.TourModel
+@{
+    ViewBag.Title = "Tours";
+    Layout = "~/Views/Shared/_CmsLayout.cshtml";
+}
+
+<div class="content">
+
+
+    <div class="content-page">
+        <!-- Start content -->
+
+        <div class="container">
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1 class="my-h1">ტურების დამატება</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="my-block">
+
+                        @using (Html.BeginForm("AddTour", "GuestCmsPanel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <h1 class="my-h1">ტურების დამატება ინგლისურად</h1>
+                            <select id="addedtours" name="CategoryNameEng" required class="my-select">
+                                <option value="">აირჩიე კატეგორია</option>
+                                @foreach (var item in ViewBag.CategoryEng)
+                                {
+                                    <option value="@item.Name">@item.Name</option>
+
+                                }
+                            </select>
+                            <input type="text" name="LangEng" style="display:none" value="en-US" />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger centered" })
+                            @Html.TextBoxFor(model=>model.TourDate, new { @name = "TourDate", @type = "text", @placeholder = "ტურის თარიღი Eng", @class = "my-text-inputs" })
+                            <div align="center">
+                                @Html.ValidationMessageFor(model => model.TourDate, "", new { @class = "text-danger centered" })
+                            </div>
+                            @Html.TextBoxFor(model => model.Price, new { @name = "Price", @type = "text", @placeholder = "ტურის ფასი Eng", @class = "my-text-inputs" })
+                            <div align="center">
+                                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger centered" })
+                            </div>
+                            
+                            @Html.TextBoxFor(model => model.TitleEng, new { @name = "Title", @type = "text", @placeholder = "ტურის სათაური Eng", @class = "my-text-inputs" })
+                            <input  type="file" class="my-file" name="Photo" required />
+                            <div align="center">
+                                @Html.ValidationMessageFor(model => model.TitleEng, "", new { @class = "text-danger centered" })
+                            </div>
+                            @Html.TextAreaFor(model => model.BigTextEng, new { @name = "BigText", @type = "text", @placeholder = "ტურის შიდა ტექსტი Eng", @class = "my-textarea" })
+                            <div align="center">
+                                @Html.ValidationMessageFor(model => model.BigTextEng, "", new { @class = "text-danger centered" })
+                            </div>
+                            @Html.TextBoxFor(model => model.TextEng, new { @name = "Text", @type = "text", @placeholder = "ტურის ტექსტი Eng", @class = "my-textarea" })
+                            <div align="center">
+                                @Html.ValidationMessageFor(model => model.TextEng, "", new { @class = "text-danger centered" })
+                            </div>
+
+
+
+                             <h1 class="my-h1">ტურების დამატება რუსულად</h1>
+                            <select id="addedtoursRus" name="CategoryNameRus" required class="my-select">
+                                <option value="">აირჩიე კატეგორია</option>
+                                @foreach (var item in ViewBag.CategoryRus)
+                                {
+                                    <option value="@item.Name">@item.Name</option>
+
+                                }
+                            </select>
+                            <input type="text" name="LangRus" style="display:none" value="ru-RU" />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger centered" })
+                           
+                            
+                            @Html.TextBoxFor(model => model.TitleRus, new { @name = "Title", @type = "text", @placeholder = "ტურის სათაური Rus", @class = "my-text-inputs" })
+                            
+                            <div align="center">
+                                @Html.ValidationMessageFor(model => model.TitleRus, "", new { @class = "text-danger centered" })
+                            </div>
+                            @Html.TextAreaFor(model => model.BigTextRus, new { @name = "BigText", @type = "text", @placeholder = "ტურის შიდა ტექსტი Rus", @class = "my-textarea" })
+                            <div align="center">
+                                @Html.ValidationMessageFor(model => model.BigTextRus, "", new { @class = "text-danger centered" })
+                            </div>
+                            @Html.TextBoxFor(model => model.TextRus, new { @name = "Text", @type = "text", @placeholder = "ტურის ტექსტი Rus", @class = "my-textarea" })
+                            <div align="center">
+                                @Html.ValidationMessageFor(model => model.TextRus, "", new { @class = "text-danger centered" })
+                            </div>
+
+
+
+                             <h1 class="my-h1">ტურების დამატება ქართულად</h1>
+                            <select id="addedtoursGeo" name="CategoryNameGeo" required class="my-select">
+                                <option value="">აირჩიე კატეგორია</option>
+                                @foreach (var item in ViewBag.CategoryGeo)
+                                {
+                                    <option value="@item.Name">@item.Name</option>
+
+                                }
+                            </select>
+                            <input type="text" name="LangGeo" style="display:none" value="ka-GE" />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger centered" })
+                          
+                            
+                            @Html.TextBoxFor(model => model.TitleGeo, new { @name = "Title", @type = "text", @placeholder = "ტურის სათაური Geo", @class = "my-text-inputs" })
+                           
+                            <div align="center">
+                                @Html.ValidationMessageFor(model => model.TitleGeo, "", new { @class = "text-danger centered" })
+                            </div>
+                            @Html.TextAreaFor(model => model.BigTextGeo, new { @name = "BigText", @type = "text", @placeholder = "ტურის შიდა ტექსტი Geo", @class = "my-textarea" })
+                            <div align="center">
+                                @Html.ValidationMessageFor(model => model.BigTextGeo, "", new { @class = "text-danger centered" })
+                            </div>
+                            @Html.TextBoxFor(model => model.TextGeo, new { @name = "Text", @type = "text", @placeholder = "ტურის ტექსტი Geo", @class = "my-textarea" })
+                            <div align="center">
+                                @Html.ValidationMessageFor(model => model.TextGeo, "", new { @class = "text-danger centered" })
+                            </div>
+
+
+
+                            <div>
+                                <input type="submit" value="დამატება" class="btn btn-success centered" />
+                                <p class="text-success centered">@TempData["Success"]</p>
+                                <p class="text-danger centered">@TempData["ErrorP"]</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div> <!-- container -->
+
+
+    </div> <!-- content -->
+
+</div>
+<!-- End content-page -->
+<!-- ============================================================== -->
+<!-- End Right content here -->
+<!-- ============================================================== -->
+<!-- Right Sidebar -->
+<!-- <div class="side-bar right-bar">
+    <a href="javascript:void(0);" class="right-bar-toggle">
+        <i class="zmdi zmdi-close-circle-o"></i>
+    </a>
+    <h4 class="">Notifications</h4>
+    <div class="notification-list nicescroll">
+        <ul class="list-group list-no-border user-list">
+
+
+
+
+        </ul>
+    </div>
+</div> -->
+<!-- /Right-bar -->
+        </div>
+<!-- END wrapper -->
+
+
+@*<script>
+    $(document).ready(function () {
+
+        $("#addedtours").change(function () {
+            var selected = $(this).val();
+
+            $.ajax({
+
+                method: "post",
+                url: '/ka-GE/GuestCmsPanel/Get',
+                data: { 'Selected': selected },
+                Success: function (response) {
+
+                }
+            });
+
+        })
+        
+    });
+
+</script>*@

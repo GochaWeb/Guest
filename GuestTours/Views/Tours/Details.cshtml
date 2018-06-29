@@ -1,0 +1,161 @@
+﻿@model GuestTours.Models.Contact
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="top-photo">
+    <h1 class="top-photo-h1">@ViewBag.Model.CategoryName</h1>
+</div> <!-- top-photo -->
+
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")">@GuestTours.Resources.Menu.Home</a></li>
+        <li><a href="@Url.Action("View","Tours")">@GuestTours.Resources.Menu.AllTours</a></li>
+        <li class="active">@ViewBag.Model.CategoryName</li>
+    </ol>
+</div> <!-- container -->
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-sm-4">
+            <nav class="left-bar-nav">
+                <h2 class="left-side-h2">@GuestTours.Resources.Text.OurTours</h2>
+                <ul class="left-side-ul">
+                    @foreach (var item in ViewBag.Category)
+                    {
+                        <li><a href="@Url.Action("View","Tours",new { by=item.Name})" class="left-side-ul-li-a a-active">@item.Name</a></li>
+                    }
+
+
+                </ul> <!-- left-side-ul -->
+            </nav> <!-- left-bar-nav -->
+        </div> <!-- col-sm-4 -->
+
+        <div class="col-sm-8">
+            <div class="detail-wrapper">
+                <!-- new carousel-->
+                <div class="owl-carousel owl-tours">
+
+                    @foreach (var item in ViewBag.Slider)
+                    {
+                        <div class="item">
+
+                            <div class="owl-tours">
+
+                                <div class="owl-tours-img-wrapper">
+                                    <img src="@item.Photo" alt="slider" class="owl-tours-img">                                    
+                                </div> <!-- owl-services-img-wrapper -->
+
+                            </div> <!-- owl-tours -->
+
+                        </div> <!-- item -->
+
+                    }
+
+                </div> <!-- owl-carousel -->
+
+                <!-- new carousel-->
+
+
+
+
+                
+
+
+
+                <h2 class="detail-h2">@ViewBag.Model.Title<span class="category-box-span">@ViewBag.Model.Tour.TourDate @GuestTours.Resources.Text.Date<span class="price-color"> @ViewBag.Model.Tour.Price @GuestTours.Resources.Text.Price</span></span></h2>
+
+                <p class="detail-p">
+                    @ViewBag.Model.BigText
+                </p>
+
+
+                <form action="" class="order-service" method="post" enctype="multipart/form-data">
+
+                    <div class="form-group">
+                        <input type="text" id="ResId" style="display:none" value="@ViewBag.Model.TourID" />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(model => model.Name, new { @type = "text", @class = "form-control", @placeholder = "Your Name" })
+
+                        <p class="mess">@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })</p>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.Email, new { @type = "text", @class = "form-control", @placeholder = "Email" })
+                        <p class="mess"> @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })</p>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.Number, new { @type = "text", @class = "form-control", @placeholder = "Enter Your Telephone Number" })
+                        <p class="mess">@Html.ValidationMessageFor(model => model.Number, "", new { @class = "text-danger" })</p>
+
+                    </div>
+
+                    <div class="form-group">
+                        @Html.TextAreaFor(model => model.Text, new { @class = "form-control", @rows = "3", @placeholder = "Text Here.." })
+                        <p class="mess">@Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })</p>
+                    </div>
+
+                    <button id="submit" class="btn btn-default">Order Your Service</button>
+
+
+                </form>
+                <div id="message" class="text-success">
+
+                </div>
+            </div> <!-- detail-wrapper -->
+        </div> <!-- col-sm-8 -->
+
+    </div> <!-- row -->
+</div> <!-- container -->
+
+
+
+<script>
+    $(document).ready(function () {
+
+        $('.order-service').show();
+
+        $('#submit').click(function () {
+            
+            
+            let Id = '@ViewBag.Model.TourID'.toString();
+            let Name = $('#Name').val();
+            let Email = $('#Email').val();
+            let Number = $('#Number').val();
+            let Text = $('#Text').val();
+            let body = "მადლობა რომ სარგებლობთ ჩვენი მომსახურებით";
+            $('.order-service')[0].reset();
+            $('.mess').hide();
+            $.ajax({
+
+                method: "post",
+                url: '/@ViewBag.language/Tours/Res',
+                data: JSON.stringify({ 'Name': Name, 'Email': Email,'Text': Text,'Id':Id,'Number':Number}),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    
+                    if (response == true) {
+                       
+                        $('#submit').attr('disabled','disabled');
+                        $('#message').html(body);
+
+                    } else {
+                        $('.mess').show();
+
+                    }
+                        
+                    
+
+                }
+
+            });
+            
+        });
+
+    });
+</script>

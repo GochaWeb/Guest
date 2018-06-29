@@ -1,0 +1,900 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GuestToursModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CategoryService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CategoryServiceTranslated">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="LangCode" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CategoryTranslated">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="LangCode" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gallery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Photo" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="LangCode" />
+          </Key>
+          <Property Name="LangCode" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TourDate" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Photo" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServicesPhoto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TourID" Type="int" Nullable="false" />
+          <Property Name="Photo" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServicesTranslated">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TourID" Type="int" Nullable="false" />
+          <Property Name="LangCode" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="BigText" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Slider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Photo" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SliderTranslated">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SliderID" Type="int" Nullable="false" />
+          <Property Name="LangCode" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TourPhoto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TourID" Type="int" Nullable="false" />
+          <Property Name="Photo" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tours">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TourDate" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Photo" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TourTranslated">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TourID" Type="int" Nullable="false" />
+          <Property Name="LangCode" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="BigText" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CategoryServiceTranslated_CategoryService">
+          <End Role="CategoryService" Type="Self.CategoryService" Multiplicity="1" />
+          <End Role="CategoryServiceTranslated" Type="Self.CategoryServiceTranslated" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryService">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CategoryServiceTranslated">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryServiceTranslated_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="1" />
+          <End Role="CategoryServiceTranslated" Type="Self.CategoryServiceTranslated" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="LangCode" />
+            </Principal>
+            <Dependent Role="CategoryServiceTranslated">
+              <PropertyRef Name="LangCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryTranslated_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="CategoryTranslated" Type="Self.CategoryTranslated" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CategoryTranslated">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryTranslated_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="1" />
+          <End Role="CategoryTranslated" Type="Self.CategoryTranslated" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="LangCode" />
+            </Principal>
+            <Dependent Role="CategoryTranslated">
+              <PropertyRef Name="LangCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServicesPhoto_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="1" />
+          <End Role="ServicesPhoto" Type="Self.ServicesPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ServicesPhoto">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServicesTranslated_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="1" />
+          <End Role="ServicesTranslated" Type="Self.ServicesTranslated" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="LangCode" />
+            </Principal>
+            <Dependent Role="ServicesTranslated">
+              <PropertyRef Name="LangCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServicesTranslated_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="1" />
+          <End Role="ServicesTranslated" Type="Self.ServicesTranslated" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ServicesTranslated">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SliderTranslated_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="1" />
+          <End Role="SliderTranslated" Type="Self.SliderTranslated" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="LangCode" />
+            </Principal>
+            <Dependent Role="SliderTranslated">
+              <PropertyRef Name="LangCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SliderTranslated_Slider">
+          <End Role="Slider" Type="Self.Slider" Multiplicity="1" />
+          <End Role="SliderTranslated" Type="Self.SliderTranslated" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Slider">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SliderTranslated">
+              <PropertyRef Name="SliderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TourPhoto_Tours">
+          <End Role="Tours" Type="Self.Tours" Multiplicity="1" />
+          <End Role="TourPhoto" Type="Self.TourPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tours">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TourPhoto">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TourTranslated_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="1" />
+          <End Role="TourTranslated" Type="Self.TourTranslated" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="LangCode" />
+            </Principal>
+            <Dependent Role="TourTranslated">
+              <PropertyRef Name="LangCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TourTranslated_Tours">
+          <End Role="Tours" Type="Self.Tours" Multiplicity="1" />
+          <End Role="TourTranslated" Type="Self.TourTranslated" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tours">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TourTranslated">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GuestToursModelStoreContainer">
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryService" EntityType="Self.CategoryService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryServiceTranslated" EntityType="Self.CategoryServiceTranslated" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryTranslated" EntityType="Self.CategoryTranslated" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gallery" EntityType="Self.Gallery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServicesPhoto" EntityType="Self.ServicesPhoto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServicesTranslated" EntityType="Self.ServicesTranslated" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Slider" EntityType="Self.Slider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SliderTranslated" EntityType="Self.SliderTranslated" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TourPhoto" EntityType="Self.TourPhoto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tours" EntityType="Self.Tours" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TourTranslated" EntityType="Self.TourTranslated" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CategoryServiceTranslated_CategoryService" Association="Self.FK_CategoryServiceTranslated_CategoryService">
+            <End Role="CategoryService" EntitySet="CategoryService" />
+            <End Role="CategoryServiceTranslated" EntitySet="CategoryServiceTranslated" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryServiceTranslated_Language" Association="Self.FK_CategoryServiceTranslated_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="CategoryServiceTranslated" EntitySet="CategoryServiceTranslated" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryTranslated_Category" Association="Self.FK_CategoryTranslated_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="CategoryTranslated" EntitySet="CategoryTranslated" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryTranslated_Language" Association="Self.FK_CategoryTranslated_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="CategoryTranslated" EntitySet="CategoryTranslated" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServicesPhoto_Services" Association="Self.FK_ServicesPhoto_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="ServicesPhoto" EntitySet="ServicesPhoto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServicesTranslated_Language" Association="Self.FK_ServicesTranslated_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="ServicesTranslated" EntitySet="ServicesTranslated" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServicesTranslated_Services" Association="Self.FK_ServicesTranslated_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="ServicesTranslated" EntitySet="ServicesTranslated" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SliderTranslated_Language" Association="Self.FK_SliderTranslated_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="SliderTranslated" EntitySet="SliderTranslated" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SliderTranslated_Slider" Association="Self.FK_SliderTranslated_Slider">
+            <End Role="Slider" EntitySet="Slider" />
+            <End Role="SliderTranslated" EntitySet="SliderTranslated" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TourPhoto_Tours" Association="Self.FK_TourPhoto_Tours">
+            <End Role="Tours" EntitySet="Tours" />
+            <End Role="TourPhoto" EntitySet="TourPhoto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TourTranslated_Language" Association="Self.FK_TourTranslated_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="TourTranslated" EntitySet="TourTranslated" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TourTranslated_Tours" Association="Self.FK_TourTranslated_Tours">
+            <End Role="Tours" EntitySet="Tours" />
+            <End Role="TourTranslated" EntitySet="TourTranslated" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GuestToursModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CategoryTranslateds" Relationship="Self.FK_CategoryTranslated_Category" FromRole="Category" ToRole="CategoryTranslated" />
+        </EntityType>
+        <EntityType Name="CategoryTranslated">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="LangCode" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_CategoryTranslated_Category" FromRole="CategoryTranslated" ToRole="Category" />
+          <NavigationProperty Name="Language" Relationship="Self.FK_CategoryTranslated_Language" FromRole="CategoryTranslated" ToRole="Language" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="LangCode" />
+          </Key>
+          <Property Name="LangCode" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CategoryTranslateds" Relationship="Self.FK_CategoryTranslated_Language" FromRole="Language" ToRole="CategoryTranslated" />
+          <NavigationProperty Name="TourTranslateds" Relationship="Self.FK_TourTranslated_Language" FromRole="Language" ToRole="TourTranslated" />
+          <NavigationProperty Name="CategoryServiceTranslateds" Relationship="GuestToursModel.FK_CategoryServiceTranslated_Language" FromRole="Language" ToRole="CategoryServiceTranslated" />
+          <NavigationProperty Name="ServicesTranslateds" Relationship="GuestToursModel.FK_ServicesTranslated_Language" FromRole="Language" ToRole="ServicesTranslated" />
+          <NavigationProperty Name="SliderTranslateds" Relationship="GuestToursModel.FK_SliderTranslated_Language" FromRole="Language" ToRole="SliderTranslated" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TourTranslated">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TourID" Type="Int32" Nullable="false" />
+          <Property Name="LangCode" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BigText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Language" Relationship="Self.FK_TourTranslated_Language" FromRole="TourTranslated" ToRole="Language" />
+          <NavigationProperty Name="Tour" Relationship="GuestToursModel.FK_TourTranslated_Tours" FromRole="TourTranslated" ToRole="Tour" />
+        </EntityType>
+        <Association Name="FK_CategoryTranslated_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="CategoryTranslated" Type="Self.CategoryTranslated" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CategoryTranslated">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryTranslated_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="1" />
+          <End Role="CategoryTranslated" Type="Self.CategoryTranslated" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="LangCode" />
+            </Principal>
+            <Dependent Role="CategoryTranslated">
+              <PropertyRef Name="LangCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TourTranslated_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="1" />
+          <End Role="TourTranslated" Type="Self.TourTranslated" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="LangCode" />
+            </Principal>
+            <Dependent Role="TourTranslated">
+              <PropertyRef Name="LangCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GuestToursEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="CategoryTranslateds" EntityType="Self.CategoryTranslated" />
+          <EntitySet Name="Languages" EntityType="Self.Language" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TourTranslateds" EntityType="Self.TourTranslated" />
+          <AssociationSet Name="FK_CategoryTranslated_Category" Association="Self.FK_CategoryTranslated_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="CategoryTranslated" EntitySet="CategoryTranslateds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryTranslated_Language" Association="Self.FK_CategoryTranslated_Language">
+            <End Role="Language" EntitySet="Languages" />
+            <End Role="CategoryTranslated" EntitySet="CategoryTranslateds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TourTranslated_Language" Association="Self.FK_TourTranslated_Language">
+            <End Role="Language" EntitySet="Languages" />
+            <End Role="TourTranslated" EntitySet="TourTranslateds" />
+          </AssociationSet>
+          <EntitySet Name="Tours" EntityType="GuestToursModel.Tour" />
+          <AssociationSet Name="FK_TourTranslated_Tours" Association="GuestToursModel.FK_TourTranslated_Tours">
+            <End Role="Tour" EntitySet="Tours" />
+            <End Role="TourTranslated" EntitySet="TourTranslateds" />
+          </AssociationSet>
+          <EntitySet Name="TourPhotoes" EntityType="GuestToursModel.TourPhoto" />
+          <AssociationSet Name="FK_TourPhoto_Tours" Association="GuestToursModel.FK_TourPhoto_Tours">
+            <End Role="Tour" EntitySet="Tours" />
+            <End Role="TourPhoto" EntitySet="TourPhotoes" />
+          </AssociationSet>
+          <EntitySet Name="CategoryServices" EntityType="GuestToursModel.CategoryService" />
+          <EntitySet Name="CategoryServiceTranslateds" EntityType="GuestToursModel.CategoryServiceTranslated" />
+          <AssociationSet Name="FK_CategoryServiceTranslated_CategoryService" Association="GuestToursModel.FK_CategoryServiceTranslated_CategoryService">
+            <End Role="CategoryService" EntitySet="CategoryServices" />
+            <End Role="CategoryServiceTranslated" EntitySet="CategoryServiceTranslateds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryServiceTranslated_Language" Association="GuestToursModel.FK_CategoryServiceTranslated_Language">
+            <End Role="Language" EntitySet="Languages" />
+            <End Role="CategoryServiceTranslated" EntitySet="CategoryServiceTranslateds" />
+          </AssociationSet>
+          <EntitySet Name="Services" EntityType="GuestToursModel.Service" />
+          <EntitySet Name="ServicesPhotoes" EntityType="GuestToursModel.ServicesPhoto" />
+          <EntitySet Name="ServicesTranslateds" EntityType="GuestToursModel.ServicesTranslated" />
+          <AssociationSet Name="FK_ServicesTranslated_Language" Association="GuestToursModel.FK_ServicesTranslated_Language">
+            <End Role="Language" EntitySet="Languages" />
+            <End Role="ServicesTranslated" EntitySet="ServicesTranslateds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServicesPhoto_Services" Association="GuestToursModel.FK_ServicesPhoto_Services">
+            <End Role="Service" EntitySet="Services" />
+            <End Role="ServicesPhoto" EntitySet="ServicesPhotoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServicesTranslated_Services" Association="GuestToursModel.FK_ServicesTranslated_Services">
+            <End Role="Service" EntitySet="Services" />
+            <End Role="ServicesTranslated" EntitySet="ServicesTranslateds" />
+          </AssociationSet>
+          <EntitySet Name="Galleries" EntityType="GuestToursModel.Gallery" />
+          <EntitySet Name="Sliders" EntityType="GuestToursModel.Slider" />
+          <EntitySet Name="SliderTranslateds" EntityType="GuestToursModel.SliderTranslated" />
+          <AssociationSet Name="FK_SliderTranslated_Language" Association="GuestToursModel.FK_SliderTranslated_Language">
+            <End Role="Language" EntitySet="Languages" />
+            <End Role="SliderTranslated" EntitySet="SliderTranslateds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SliderTranslated_Slider" Association="GuestToursModel.FK_SliderTranslated_Slider">
+            <End Role="Slider" EntitySet="Sliders" />
+            <End Role="SliderTranslated" EntitySet="SliderTranslateds" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Tour">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TourDate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Photo" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TourTranslateds" Relationship="GuestToursModel.FK_TourTranslated_Tours" FromRole="Tour" ToRole="TourTranslated" />
+          <NavigationProperty Name="TourPhotoes" Relationship="GuestToursModel.FK_TourPhoto_Tours" FromRole="Tour" ToRole="TourPhoto" />
+        </EntityType>
+        <Association Name="FK_TourTranslated_Tours">
+          <End Type="GuestToursModel.Tour" Role="Tour" Multiplicity="1" />
+          <End Type="GuestToursModel.TourTranslated" Role="TourTranslated" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TourTranslated">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TourPhoto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TourID" Type="Int32" Nullable="false" />
+          <Property Name="Photo" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tour" Relationship="GuestToursModel.FK_TourPhoto_Tours" FromRole="TourPhoto" ToRole="Tour" />
+        </EntityType>
+        <Association Name="FK_TourPhoto_Tours">
+          <End Type="GuestToursModel.Tour" Role="Tour" Multiplicity="1" />
+          <End Type="GuestToursModel.TourPhoto" Role="TourPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TourPhoto">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CategoryService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CategoryServiceTranslateds" Relationship="GuestToursModel.FK_CategoryServiceTranslated_CategoryService" FromRole="CategoryService" ToRole="CategoryServiceTranslated" />
+        </EntityType>
+        <EntityType Name="CategoryServiceTranslated">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="LangCode" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CategoryService" Relationship="GuestToursModel.FK_CategoryServiceTranslated_CategoryService" FromRole="CategoryServiceTranslated" ToRole="CategoryService" />
+          <NavigationProperty Name="Language" Relationship="GuestToursModel.FK_CategoryServiceTranslated_Language" FromRole="CategoryServiceTranslated" ToRole="Language" />
+        </EntityType>
+        <Association Name="FK_CategoryServiceTranslated_CategoryService">
+          <End Type="GuestToursModel.CategoryService" Role="CategoryService" Multiplicity="1" />
+          <End Type="GuestToursModel.CategoryServiceTranslated" Role="CategoryServiceTranslated" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryService">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CategoryServiceTranslated">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryServiceTranslated_Language">
+          <End Type="GuestToursModel.Language" Role="Language" Multiplicity="1" />
+          <End Type="GuestToursModel.CategoryServiceTranslated" Role="CategoryServiceTranslated" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="LangCode" />
+            </Principal>
+            <Dependent Role="CategoryServiceTranslated">
+              <PropertyRef Name="LangCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TourDate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Photo" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ServicesPhotoes" Relationship="GuestToursModel.FK_ServicesPhoto_Services" FromRole="Service" ToRole="ServicesPhoto" />
+          <NavigationProperty Name="ServicesTranslateds" Relationship="GuestToursModel.FK_ServicesTranslated_Services" FromRole="Service" ToRole="ServicesTranslated" />
+        </EntityType>
+        <EntityType Name="ServicesPhoto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TourID" Type="Int32" Nullable="false" />
+          <Property Name="Photo" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Service" Relationship="GuestToursModel.FK_ServicesPhoto_Services" FromRole="ServicesPhoto" ToRole="Service" />
+        </EntityType>
+        <EntityType Name="ServicesTranslated">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TourID" Type="Int32" Nullable="false" />
+          <Property Name="LangCode" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BigText" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Language" Relationship="GuestToursModel.FK_ServicesTranslated_Language" FromRole="ServicesTranslated" ToRole="Language" />
+          <NavigationProperty Name="Service" Relationship="GuestToursModel.FK_ServicesTranslated_Services" FromRole="ServicesTranslated" ToRole="Service" />
+        </EntityType>
+        <Association Name="FK_ServicesTranslated_Language">
+          <End Type="GuestToursModel.Language" Role="Language" Multiplicity="1" />
+          <End Type="GuestToursModel.ServicesTranslated" Role="ServicesTranslated" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="LangCode" />
+            </Principal>
+            <Dependent Role="ServicesTranslated">
+              <PropertyRef Name="LangCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServicesPhoto_Services">
+          <End Type="GuestToursModel.Service" Role="Service" Multiplicity="1" />
+          <End Type="GuestToursModel.ServicesPhoto" Role="ServicesPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ServicesPhoto">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServicesTranslated_Services">
+          <End Type="GuestToursModel.Service" Role="Service" Multiplicity="1" />
+          <End Type="GuestToursModel.ServicesTranslated" Role="ServicesTranslated" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ServicesTranslated">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Gallery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Photo" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Slider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Photo" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SliderTranslateds" Relationship="GuestToursModel.FK_SliderTranslated_Slider" FromRole="Slider" ToRole="SliderTranslated" />
+        </EntityType>
+        <EntityType Name="SliderTranslated">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SliderID" Type="Int32" Nullable="false" />
+          <Property Name="LangCode" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Language" Relationship="GuestToursModel.FK_SliderTranslated_Language" FromRole="SliderTranslated" ToRole="Language" />
+          <NavigationProperty Name="Slider" Relationship="GuestToursModel.FK_SliderTranslated_Slider" FromRole="SliderTranslated" ToRole="Slider" />
+        </EntityType>
+        <Association Name="FK_SliderTranslated_Language">
+          <End Type="GuestToursModel.Language" Role="Language" Multiplicity="1" />
+          <End Type="GuestToursModel.SliderTranslated" Role="SliderTranslated" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="LangCode" />
+            </Principal>
+            <Dependent Role="SliderTranslated">
+              <PropertyRef Name="LangCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SliderTranslated_Slider">
+          <End Type="GuestToursModel.Slider" Role="Slider" Multiplicity="1" />
+          <End Type="GuestToursModel.SliderTranslated" Role="SliderTranslated" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Slider">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SliderTranslated">
+              <PropertyRef Name="SliderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GuestToursModelStoreContainer" CdmEntityContainer="GuestToursEntities">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="GuestToursModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryTranslateds">
+            <EntityTypeMapping TypeName="GuestToursModel.CategoryTranslated">
+              <MappingFragment StoreEntitySet="CategoryTranslated">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="LangCode" ColumnName="LangCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Languages">
+            <EntityTypeMapping TypeName="GuestToursModel.Language">
+              <MappingFragment StoreEntitySet="Language">
+                <ScalarProperty Name="LangCode" ColumnName="LangCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="GuestToursModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TourTranslateds">
+            <EntityTypeMapping TypeName="GuestToursModel.TourTranslated">
+              <MappingFragment StoreEntitySet="TourTranslated">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TourID" ColumnName="TourID" />
+                <ScalarProperty Name="LangCode" ColumnName="LangCode" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="BigText" ColumnName="BigText" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tours">
+            <EntityTypeMapping TypeName="GuestToursModel.Tour">
+              <MappingFragment StoreEntitySet="Tours">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="TourDate" ColumnName="TourDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TourPhotoes">
+            <EntityTypeMapping TypeName="GuestToursModel.TourPhoto">
+              <MappingFragment StoreEntitySet="TourPhoto">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="TourID" ColumnName="TourID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryServices">
+            <EntityTypeMapping TypeName="GuestToursModel.CategoryService">
+              <MappingFragment StoreEntitySet="CategoryService">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryServiceTranslateds">
+            <EntityTypeMapping TypeName="GuestToursModel.CategoryServiceTranslated">
+              <MappingFragment StoreEntitySet="CategoryServiceTranslated">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LangCode" ColumnName="LangCode" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="GuestToursModel.Service">
+              <MappingFragment StoreEntitySet="Services">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="TourDate" ColumnName="TourDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServicesPhotoes">
+            <EntityTypeMapping TypeName="GuestToursModel.ServicesPhoto">
+              <MappingFragment StoreEntitySet="ServicesPhoto">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="TourID" ColumnName="TourID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServicesTranslateds">
+            <EntityTypeMapping TypeName="GuestToursModel.ServicesTranslated">
+              <MappingFragment StoreEntitySet="ServicesTranslated">
+                <ScalarProperty Name="BigText" ColumnName="BigText" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="LangCode" ColumnName="LangCode" />
+                <ScalarProperty Name="TourID" ColumnName="TourID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Galleries">
+            <EntityTypeMapping TypeName="GuestToursModel.Gallery">
+              <MappingFragment StoreEntitySet="Gallery">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sliders">
+            <EntityTypeMapping TypeName="GuestToursModel.Slider">
+              <MappingFragment StoreEntitySet="Slider">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SliderTranslateds">
+            <EntityTypeMapping TypeName="GuestToursModel.SliderTranslated">
+              <MappingFragment StoreEntitySet="SliderTranslated">
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="LangCode" ColumnName="LangCode" />
+                <ScalarProperty Name="SliderID" ColumnName="SliderID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,110 @@
+/* ==================== My-Styles========== */
+@font-face {
+    font-family: 'BPG Glaho WEB Caps';
+    src: url('../fonts/bpg-glaho-web-caps-webfont.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/bpg-glaho-web-caps-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/bpg-glaho-web-caps-webfont.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../fonts/bpg-glaho-web-caps-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+         url('../fonts/bpg-glaho-web-caps-webfont.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/bpg-glaho-web-caps-webfont.svg#bpg_glaho_web_capsregular') format('svg'); /* Legacy iOS */
+}
+body {
+    font-family: 'BPG Glaho WEB Caps';
+}
+.my-block {
+    background: #253138;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(255,255,255, .5);
+    margin-bottom: 40px;
+}
+.my-file {
+    margin: 20px 0;
+    box-shadow: 0 0 10px rgba(255,255,255, .5);
+    border-radius: 10px;
+    padding: 5px;
+}
+.my-file-full {
+    width: 100%;
+    margin: 20px 0;
+    box-shadow: 0 0 10px rgba(255,255,255, .5);
+    border-radius: 10px;
+    padding: 5px;
+}
+.my-select {
+    padding: 10px;
+    border: none;
+    display: block;
+    width: 80%;
+    margin: 0 auto 50px;
+    border-radius: 10px 0 0 10px;
+}
+.my-h1 {
+    text-align: center;
+    padding: 30px 0;
+    box-shadow: 0 0 10px rgba(255,255,255, .5);
+    font-size: 30px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-family: 'BPG Glaho WEB Caps';
+}
+.my-h5 {
+    padding-bottom: 20px;
+    font-family: 'BPG Glaho WEB Caps';
+}
+.my-image {
+    width: 150px;
+    display: block;
+    box-shadow: 0 0 10px rgba(255,255,255, .5);
+    margin: 20px 0;
+    border-radius: 5px;
+}
+.centered {
+    margin: 20px auto;
+    display: block;
+}
+.align-center {
+    text-align: center;
+}
+.my-header {
+    padding: 20px;
+    border-radius: 20px;
+    border: none;
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+}
+.my-textarea {
+    min-height: 200px;
+    width: 80%;
+    padding: 20px;
+    border-radius: 20px;
+    border: none;
+    margin: 0 auto 20px;
+    display: block;
+}
+.my-text-inputs {
+    padding: 20px;
+    border-radius: 20px;
+    border: none;
+    display: block;
+    width: 80%;
+    margin: 0 auto 50px;
+}
+.log-out {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 1px;
+    width: 100px;
+    height: 40px;
+    background: lightgrey;
+    color: red;
+    font-weight: bold;
+    margin: 10px auto 0;
+}
+
+
+
+
+

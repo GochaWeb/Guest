@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "ChangeAddedCatServ";
+    Layout = "~/Views/Shared/_CmsLayout.cshtml";
+}
+
+
+<div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1 class="my-h1">ტურის კატეგორიების შეცვლა</h1>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="my-block">
+                        <p class="text-success">@TempData["Success"]</p>
+                        <form action="@Url.Action("ChangeAddedCatServ","GuestCmsPanel",new { id=ViewBag.ID})" method="post" enctype="multipart/form-data">
+
+                            <h5 class="my-h5 align-center">მთავარი გვერდის სლაიდერის ფოტოების დამატება</h5>
+
+
+                            <input type="text" name="LangEng" value="@ViewBag.CategoryEng" size="50" required />
+
+
+                            <input type="text" name="LangRus" value="@ViewBag.CategoryRus" size="50" required />
+
+
+                            <input type="text" name="LangGeo" value="@ViewBag.CategoryGeo" size="50" required />
+
+
+
+
+                            <button type="submit" class="btn btn-success centered">გაგზავნა</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+        </div> <!-- container -->
+
+
+    </div> <!-- content -->
+
+</div>
+<!-- End content-page -->
+<!-- ============================================================== -->
+<!-- End Right content here -->
+<!-- ============================================================== -->
+<!-- Right Sidebar -->
+<!-- <div class="side-bar right-bar">
+    <a href="javascript:void(0);" class="right-bar-toggle">
+        <i class="zmdi zmdi-close-circle-o"></i>
+    </a>
+    <h4 class="">Notifications</h4>
+    <div class="notification-list nicescroll">
+        <ul class="list-group list-no-border user-list">
+
+
+
+
+        </ul>
+    </div>
+</div> -->
+<!-- /Right-bar -->
+</div>
+<!-- END wrapper -->
+
+<script>
+    $(document).ready(function () {
+        $('.close-wrapper').click(function () {
+            var x = confirm('დარწმუნებული ხარ?');
+            if (x) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+    });
+</script>
+
+</body>
+</html>
+
+
